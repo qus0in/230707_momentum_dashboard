@@ -17,7 +17,13 @@ def get_table_from_supabase(table_name):
     data = response.json()
     return data
 
-st.number_input(key='total')
+option = dict(
+    label = "자산총액",
+    min_value = 0,
+    step=1,
+    foramt="%d원"
+)
+st.number_input(**option)
 
 table_name = 'recent_momentum_score'
 data = get_table_from_supabase(table_name)
