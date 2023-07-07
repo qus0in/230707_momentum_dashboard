@@ -20,4 +20,4 @@ def get_table_from_supabase(table_name):
 table_name = 'recent_momentum_score'
 data = get_table_from_supabase(table_name)
 df = pd.DataFrame(data)
-st.dataframe(df)
+st.dataframe(df, hide_index=1)
