@@ -47,7 +47,10 @@ with col2:
 with st.expander("Cluster Groups"):
     table_name = 'recent_cluster_groups'
     data = get_table_from_supabase(table_name)
-    df3 = pd.DataFrame(data, index=range(len(data)))
-    st.dataframe(df3, hide_index=1, use_container_width=1)
+    df3 = pd.DataFrame(data).apply(lambda x: x.str.split(', '))
+    st.dataframe(df3, hide_index=1, use_container_width=1,
+    column_config={
+        "cluster_groups": st.column_config.ListColumn("그룹별 종목")
+    })
 
 st.image('./welcome.png', use_column_width=1)
