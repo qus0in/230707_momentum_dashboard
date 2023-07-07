@@ -44,4 +44,10 @@ with col2:
     df2['Unit'] = (((0.01 / df2.aatr) / 4 * st.session_state.total // 10000).apply(math.floor) * 10000)
     st.dataframe(df2.iloc[:, [0, 4]], hide_index=1, use_container_width=1)
 
+with st.expander("Cluster Groups"):
+    table_name = 'recent_cluster_groups'
+    data = get_table_from_supabase(table_name)
+    df3 = pd.DataFrame(data)
+    st.dataframe(df3, hide_index=1, use_container_width=1)
+
 st.image('./welcome.png', use_column_width=1)
