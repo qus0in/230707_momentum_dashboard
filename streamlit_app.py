@@ -16,5 +16,6 @@ def get_table_from_supabase(table_name, params):
     data = response.json()
     return data
 
-params = dict(group='created_at', select='created_at')
+params = dict(
+    select='created_at')
 st.write(get_table_from_supabase('momentum_score', params))
