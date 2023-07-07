@@ -47,7 +47,7 @@ with col2:
 with st.expander("Cluster Groups"):
     table_name = 'recent_cluster_groups'
     data = get_table_from_supabase(table_name)
-    df3 = pd.DataFrame(data)
+    df3 = pd.DataFrame(data, index=range(len(data)))
     st.dataframe(df3, hide_index=1, use_container_width=1)
 
 st.image('./welcome.png', use_column_width=1)
