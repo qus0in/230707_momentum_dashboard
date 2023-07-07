@@ -21,7 +21,6 @@ option = dict(
     label = "자산총액",
     min_value = 0,
     step=1,
-    format="%d원"
 )
 st.number_input(**option)
 
