@@ -18,6 +18,10 @@ def get_table_from_supabase(table_name):
     data = response.json()
     return data
 
+st.set_page_config(
+    page_title='Momentum Dashboard',
+    page_icon='🕹️')
+
 option = dict(
     label = "자산총액",
     min_value = 0,
@@ -37,5 +41,5 @@ with col1:
 
 with col2:
     df2 = df[df.score >= df.score.iloc[3]].query('score > 0')
-    df2['Unit'] = ((0.01 / df2.aatr) / 4 * st.session_state.total // 10000).apply(math.floor) * 10000
+    df2['Unit'] = (((0.01 / df2.aatr) / 4 * st.session_state.total // 10000).apply(math.floor) * 10000)
     st.dataframe(df2.iloc[:, [0, 4]], hide_index=1, use_container_width=1)
