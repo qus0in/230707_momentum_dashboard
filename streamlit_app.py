@@ -17,6 +17,8 @@ def get_table_from_supabase(table_name):
     data = response.json()
     return data
 
+st.number_input(key='total')
+
 table_name = 'recent_momentum_score'
 data = get_table_from_supabase(table_name)
 df = pd.DataFrame(data)
