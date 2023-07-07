@@ -37,5 +37,5 @@ with col1:
 
 with col2:
     df2 = df[df.score >= df.score.iloc[3]].query('score > 0')
-    df2['Unit'] = (math.floor((0.01 / df2.aatr) / 4 * st.session_state.total * 10000) // 10000)
+    df2['Unit'] = ((0.01 / df2.aatr) / 4 * st.session_state.total * 10000).apply(math.floor) // 10000
     st.dataframe(df2.iloc[:, [0, 4]], hide_index=1, use_container_width=1)
