@@ -1,6 +1,7 @@
 import requests
 import os
 import streamlit as st
+import pandas as pd
 
 SUPABASE_URL = os.environ.get('SUPABASE_URL')
 SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
@@ -16,4 +17,7 @@ def get_table_from_supabase(table_name):
     data = response.json()
     return data
 
-st.write(get_table_from_supabase('recent_momentum_score'))
+table_name = 'recent_momentum_score'
+data = get_table_from_supabase(table_name)
+df = pd.DataFrame(data)
+st.dataframe(df)
