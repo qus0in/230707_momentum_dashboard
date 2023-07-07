@@ -17,5 +17,7 @@ def get_table_from_supabase(table_name, params):
     return data
 
 params = dict(
-    select='created_at')
+    select='created_at',
+    order='created_at.desc',
+)
 st.write(get_table_from_supabase('momentum_score', params))
