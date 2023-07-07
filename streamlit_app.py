@@ -22,10 +22,8 @@ st.set_page_config(
     page_title='Momentum Dashboard',
     page_icon='🕹️')
 
-st.button("Re-run", on_click=lambda: st.experimental_rerun())
-
 option = dict(
-    label = "자산총액",
+    label = "🌬️ Total",
     min_value = 0,
     step=1,
     value=10_000_000,
