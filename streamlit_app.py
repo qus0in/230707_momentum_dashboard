@@ -21,6 +21,7 @@ option = dict(
     label = "자산총액",
     min_value = 0,
     step=1,
+    value=10_000_000
     key='total'
 )
 st.number_input(**option)
@@ -36,4 +37,4 @@ with col1:
 with col2:
     df2 = df[df.score >= df.score.iloc[3]].query('score > 0')
     df2['Unit'] = (0.01 / df2.aatr) * st.session_state.total
-    st.dataframe(df2.iloc[:, [0, 1, 4]], hide_index=1, use_container_width=1)
+    st.dataframe(df2.iloc[:, [0, 4]], hide_index=1, use_container_width=1)
