@@ -51,7 +51,7 @@ with st.expander("Cluster Groups"):
     df3 = pd.DataFrame(data).apply(lambda x: x.str.split(', '))
     st.dataframe(df3, hide_index=1, use_container_width=1,
     column_config={
-        "cluster_names": "클러스터명",
+        "cluster_name": "클러스터명",
         "cluster_groups": st.column_config.ListColumn("그룹별 종목")
     })
 
