@@ -26,7 +26,7 @@ option = dict(
     label = "🌬️ Total",
     min_value = 0,
     step=1,
-    value=10_000_000,
+    value=80_000_000,
     key='total'
 )
 st.number_input(**option)
