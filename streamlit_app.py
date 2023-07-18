@@ -50,6 +50,7 @@ with st.expander("Cluster Groups"):
     table_name = 'recent_cluster_groups'
     data = get_table_from_supabase(table_name)
     df3 = pd.DataFrame(data)
+    df3.cluster_name = df.cluster_name.str.replace(".", "")
     df3['cluster_groups'] = df3['cluster_groups'].str.split(', ')
     st.dataframe(df3.iloc[:, [1,0]], hide_index=1, use_container_width=1,
     column_config={
