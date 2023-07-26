@@ -52,7 +52,7 @@ with col1:
     data = get_table_from_supabase(table_name)
     df = pd.DataFrame(data)
     df = pd.merge(df, etfs, left_on='symbol', right_on='itemcode')
-    df.rename({'name':'category'})
+    df.rename(columns={'name':'category'})
     st.dataframe(df.iloc[:10, [0, 1, -1]],
                  hide_index=True,
                  use_container_width=True)
