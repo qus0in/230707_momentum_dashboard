@@ -43,7 +43,7 @@ option = dict(
 )
 st.number_input(**option)
 
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([3, 2])
 
 etfs = get_etfs()
 
@@ -52,7 +52,6 @@ with col1:
     data = get_table_from_supabase(table_name)
     df = pd.DataFrame(data)
     df = pd.merge(df, etfs, left_on='symbol', right_on='itemcode')
-    df.drop(columns=['itemcode'], inplace=True)
     st.dataframe(df.iloc[:, [0, 1, -1]],
                  hide_index=True,
                  use_container_width=True)
