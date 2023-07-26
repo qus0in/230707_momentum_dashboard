@@ -28,7 +28,7 @@ def get_etfs():
     )
     response = requests.get(url, params)
     data = response.json()['result']['etfItemList']
-    return data
+    return pd.DataFrame(data).iloc[:, [0, 2]]
 
 st.set_page_config(
     page_title='Momentum Dashboard',
