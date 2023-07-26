@@ -45,13 +45,13 @@ st.number_input(**option)
 
 col1, col2 = st.columns(2)
 
-st.write(get_etfs())
+etfs = get_etfs()
 
 with col1:
     table_name = 'recent_momentum_score'
     data = get_table_from_supabase(table_name)
     df = pd.DataFrame(data)
-    df.name = df.name.str.replace(".", "")
+    df = pd.merge(df, etfs, left_on='symbol', right_on='itemcode')
     st.dataframe(df, hide_index=1, use_container_width=1)
 
 with col2:
