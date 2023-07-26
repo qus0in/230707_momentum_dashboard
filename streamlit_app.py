@@ -53,7 +53,9 @@ with col1:
     df = pd.DataFrame(data)
     df = pd.merge(df, etfs, left_on='symbol', right_on='itemcode')
     df.drop(columns=['itemcode'], inplace=True)
-    st.dataframe(df.iloc[:, [0, 1, -1]], hide_index=1, use_container_width=1)
+    st.dataframe(df.iloc[:, [0, 1, -1]],
+                 hide_index=True,
+                 use_container_width=True)
 
 with col2:
     df2 = df[df.score >= df.score.iloc[4]].query('score > 0')
