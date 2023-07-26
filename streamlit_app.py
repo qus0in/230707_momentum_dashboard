@@ -18,6 +18,18 @@ def get_table_from_supabase(table_name):
     data = response.json()
     return data
 
+@st.cache_data
+def get_etfs():
+    url = "https://finance.naver.com/api/sise/etfItemList.nhn"
+    params = dict(
+        etfType=0,
+        targetColumn='market_sum',
+        sortOrder='desc'
+    )
+    response = requests.get(url, params)
+    data = response.json()['result']['etfItemList']
+    return data
+
 st.set_page_config(
     page_title='Momentum Dashboard',
     page_icon='🕹️')
@@ -32,6 +44,8 @@ option = dict(
 st.number_input(**option)
 
 col1, col2 = st.columns(2)
+
+st.write(get_etfs())
 
 with col1:
     table_name = 'recent_momentum_score'
