@@ -58,7 +58,7 @@ with col1:
 with col2:
     df2 = df[df.score >= df.score.iloc[4]].query('score > 0')
     df2['Unit'] = (((0.01 / df2.aatr) / 4 * st.session_state.total // 1000000).apply(math.floor) * 1000000)
-    st.dataframe(df2.iloc[:, [0, 4]], hide_index=1, use_container_width=1)
+    st.dataframe(df2.loc[:, ['symbol', 'Unit']], hide_index=True, use_container_width=True)
     st.metric("위험 조정 후 주식 비중", f"{math.floor(df2.Unit.sum() / st.session_state.total * 10000) / 100}%")
 
 with st.expander("Cluster Groups"):
