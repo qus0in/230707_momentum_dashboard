@@ -53,7 +53,7 @@ with col1:
     df = pd.DataFrame(data)
     df = pd.merge(df, etfs, left_on='symbol', right_on='itemcode')
     df.rename(columns={'name':'category'}, inplace=True)
-    st.dataframe(df.iloc[:10, [0, 1, -1]],
+    st.dataframe(df.iloc[:10, [0, 1, 3, -1]],
                  hide_index=True,
                  use_container_width=True)
 
