@@ -30,10 +30,6 @@ def get_etfs():
     data = response.json()['result']['etfItemList']
     return pd.DataFrame(data).iloc[:, [0, 2]]
 
-# st.set_page_config(
-#     page_title='Momentum Dashboard',
-#     page_icon='🕹️')
-
 option = dict(
     label = "🌬️ Total",
     min_value = 0,
@@ -60,7 +56,6 @@ with col1:
 with col2:
     df2 = df[df.score >= df.score.iloc[4]].query('score > 0')
     df2['unit'] = (((0.01 / df2.aatr).apply(lambda x: min(x, 1)) / 4 * st.session_state.total // 1000000).apply(math.floor) * 1000000)
-    st.write(df2['unit'])
     st.dataframe(df2.loc[:, ['symbol', 'unit']], hide_index=True, use_container_width=True)
     st.metric("위험 조정 후 주식 비중", f"{math.floor(df2.unit.sum() / st.session_state.total * 10000) / 100}%")
 
