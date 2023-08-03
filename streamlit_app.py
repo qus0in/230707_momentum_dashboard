@@ -5,7 +5,9 @@ import pandas as pd
 import math
 
 SUPABASE_URL = os.environ.get('SUPABASE_URL')
+st.write(SUPABASE_URL)
 SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
+st.write(SUPABASE_KEY)
 
 def get_table_from_supabase(table_name):
     url = f"{SUPABASE_URL}/rest/v1/{table_name}"
